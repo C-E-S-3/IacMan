@@ -1,0 +1,13 @@
+[DEFAULT]
+# Ban hosts for one hour:
+bantime  = 3600
+
+# Number of retry attempts before getting banned:
+maxretry = 5
+
+[sshd]
+enabled  = true
+port     = ssh
+logpath  = /var/log/auth.log
+backend  = systemd
+
