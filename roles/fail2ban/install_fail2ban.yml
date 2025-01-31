@@ -1,6 +1,6 @@
 ---
 - name: Install and configure Fail2Ban
-  hosts: all
+  hosts: ces-dev
   become: yes
 
   tasks:

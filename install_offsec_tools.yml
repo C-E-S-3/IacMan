@@ -1,0 +1,5 @@
+---
+- name: Install offensive security tools
+  hosts: ces-pwn
+  roles:
+    - offsec_tools

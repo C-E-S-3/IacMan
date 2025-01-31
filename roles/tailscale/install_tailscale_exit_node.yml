@@ -1,0 +1,17 @@
+---
+- name: Install Tailscale
+  hosts: all
+  become: yes
+  roles:
+    - role: artis3n.tailscale
+      tailscale_auth_key: "{{ tailscale_auth_key }}"
+#- name: Enable IP forwarding
+#  hosts: all
+#  become: yes
+#
+#  sysctl:
+#    name: net.ipv4.ip_forward
+#    value: 1
+#    state: present
+#    reload: yes
+

@@ -1,0 +1,7 @@
+---
+- name: Install Tailscale
+  hosts: all
+  become: yes
+  roles:
+    - role: artis3n.tailscale
+      tailscale_auth_key: "{{ tailscale_auth_key }}"

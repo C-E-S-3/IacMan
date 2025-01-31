@@ -1,0 +1,17 @@
+---
+- name: Create directory for tools
+  become: true
+  file:
+    path: /opt/offsec_tools
+    state: directory
+    mode: '0755'
+
+- name: Download Responder repository from GitHub
+  become: true
+  git:
+    repo: https://github.com/lgandx/Responder.git
+    dest: /opt/offsec_tools/Responder
+    version: master
+    force: yes
+
+# Add more tasks to download other repositories here
