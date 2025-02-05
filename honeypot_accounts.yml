@@ -1,0 +1,39 @@
+---
+- name: Setup Honeypot SSH Accounts
+  hosts: all
+  become: yes
+  tasks:
+    - name: Create test users with no passwords
+      user:
+        name: "{{ item }}"
+        shell: /bin/bash
+        password: "*"
+      with_items:
+        - ubuntu
+        - debian
+
+    - name: Allow SSH login without password
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: "^PermitEmptyPasswords"
+        line: "PermitEmptyPasswords yes"
+        state: present
+
+    - name: Enable password authentication in SSH
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: "^PasswordAuthentication"
+        line: "PasswordAuthentication yes"
+        state: present
+
+    - name: Ensure root account remains password protected
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: "^PermitRootLogin"
+        line: "PermitRootLogin prohibit-password"
+        state: present
+
+    - name: Restart SSH service
+      service:
+        name: ssh
+        state: restarted

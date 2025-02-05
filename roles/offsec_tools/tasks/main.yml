@@ -14,4 +14,26 @@
     version: master
     force: yes
 
-# Add more tasks to download other repositories here
+- name: Download AzSubEnum repository from GitHub
+  become: true
+  git:
+    repo: https://github.com/yuyudhn/AzSubEnum
+    dest: /opt/offsec_tools/AzSubEnum
+    version: main
+    force: yes
+
+- name: Download Omnispray repository from GitHub
+  become: true
+  git:
+    repo: https://github.com/0xZDH/Omnispray
+    dest: /home/azureuser/offsec_tools/Omnispray
+    version: master
+    force: yes
+
+- name: Download Evilginx2 repository from GitHub
+  become: true
+  git:
+    repo: https://github.com/kgretzky/evilginx2
+    dest: /home/azureuser/offsec_tools/evilginx2
+    version: master
+    force: yes
