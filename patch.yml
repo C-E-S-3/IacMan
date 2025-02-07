@@ -1,6 +1,6 @@
 ---
 - name: Update Ubuntu Server
-  hosts: all
+  hosts: ces-tpot
   become: yes
 
   tasks:
